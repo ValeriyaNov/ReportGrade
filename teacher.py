@@ -35,6 +35,6 @@ def menu_teach():
 menu_teach()
 
 
-#import os
-#print (os.listdir(os.getcwd()))
+import os
+print (os.listdir(os.getcwd()))
 
