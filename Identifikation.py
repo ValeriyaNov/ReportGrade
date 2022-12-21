@@ -1,25 +1,30 @@
 # import time
-complete = False
-teach_passw = [["username","password", "name"],["username2","password2","name2"]]
-student_passw = [["username3","password3"],["username4","password4"]]
+import os
+os.chdir(os.path.dirname(__file__))
+import csv
 
-while not complete:
-    username = input("Введите логин   ")
-    password = input("Введите пароль   ")
-    if username[0] == 'p':
-        for n in len(teach_passw): 
-            if username == teach_passw[n][0][0] and password == teach_passw[0][n][0]:
-                print("Пароль верный!") 
-                print(f"Добро пожаловать, преподаватель {teach_passw[0][0][n]}!")
-                complete = True
-            else:
-                break
-    elif username[0] == 's':
-        for n in len(student_passw): 
-            if username == student_passw[n][0] and password == student_passw[0][n]:
-                print("Пароль верный! Добро пожаловать, студент") 
-                complete = True
-            else:
-                break       
-    elif not complete:
-        print("Введие пароль заново!")
+
+def identifikation(): 
+    complete = False
+    path = 'password.csv'
+    data = {}
+    with open(path, "r", encoding='utf-8') as file:
+        file_reader = csv.DictReader(file, delimiter = ";")
+        user_passw = list(file_reader)   
+
+    while not complete:
+        username = input("Введите логин   ")
+        password = input("Введите пароль   ")
+        for n in range(len(user_passw)): 
+            d = list(user_passw[n].values())
+        
+            if username == d[2] and password == d[3]:
+                    print("Пароль верный!") 
+                    print(f"Добро пожаловать, {d[4]} {d[1]}!")
+                    
+                    complete = True 
+        
+            
+        if not complete:
+            print("Введие пароль заново!")
+    

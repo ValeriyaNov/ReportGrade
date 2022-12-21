@@ -4,7 +4,7 @@ os.chdir(os.path.dirname(__file__))
 
 import operations
 
-def menu_teach():
+def menu_teach():  
     #complete = False
     print('Выберете действия: 1 - поставить оценку; 2 - посмотреть оценки')
     choic = input()
