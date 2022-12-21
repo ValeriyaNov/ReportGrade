@@ -16,14 +16,15 @@ def menu_teach():
         while not comm:
             if answer == 1:
                 with open('Grade.csv', 'a', encoding='UTF-8') as f:
-                    f_writ = csv.writer(f, delimiter = "|", lineterminator="\r\n")
+                    f_writ = csv.writer(f, delimiter = "|")
+                    #f_writ.writerow(' ')
                     f_writ.writerow(score)
-                    
+                    ''', lineterminator="\n"'''
                     comm = True
             elif answer == 2:
                 comm = True
-            if not comm:
-                print('Ошибка ввода, введите заново!')
+            # if not comm:
+            #     print('Ошибка ввода, введите заново!')
     elif choic == '2':
         operations.find_grade_teacher()
     else:
