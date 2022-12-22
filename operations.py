@@ -3,32 +3,60 @@ os.chdir(os.path.dirname(__file__))
 import csv
 
 def read_grade():
-    
-    while True:
+    complet = False
+    while not complet:
         print('Выберете предмет: 1 - химия, 2 - материаловедение, 3 - метрология, 4 - сертификация')
         item = input()
-    
-        if item == '1' or item == '2' or item == '3' or item == '4':
-            break  
-        else:
+        if item == '1':
+            item_lst = 'Химия'
+            complet = True
+        elif item == '2':
+            item_lst = 'Материаловедение'
+            complet = True
+        elif item == '3':
+            item_lst = 'Метрология' 
+            complet = True
+        elif item == '4':
+            item_lst = 'Сертификация'
+            complet = True
+        if not complet:
             print('Введите заново')
-
-    while True:
+    complet = False
+    while not complet:
         print('Выберете вид работы: 1 - РГЗ, 2 - КР/КП, 3 - экзамен')
         type_work = int(input())
-        if type_work == 1 or type_work == 2 or type_work == 3:
-            break
-        else:
+        if type_work == 1:
+            type_work_lst = 'РГЗ'
+            complet = True
+        elif type_work == 2:
+            type_work_lst = 'КЗ/КП'
+            complet = True
+        elif type_work == 3:
+            type_work_lst = 'экзамен'
+            complet = True
+        if not complet:
             print('Введите заново')
-    while True:
+    complet = False
+    while not complet:
         print('Введите оценку 1 - не удовлетворительно, 2 - удовлетворительно, 3 - хорошо, 4 - отлично')
         grade = int(input())
-        if grade == 1 or grade== 2 or grade == 3 or grade == 4:
-            break
-        else:
+        if grade == 1:
+            grade_lst = 'не удовлетворительно'
+            complet = True
+        elif grade == 2:
+            grade_lst = 'удовлетворительно'
+            complet = True
+        elif grade == 3:
+            grade_lst = 'хорошо' 
+            complet = True
+        elif grade == 4:
+            grade_lst = 'отлично' 
+            complet = True
+        if not complet:
             print('Введите заново')
 
-    while True:
+    complet = False
+    while not complet:
         print('Введите ФИО студента: ')
         name_student = input()
         path = 'password.csv'
@@ -39,79 +67,57 @@ def read_grade():
             d = list(user_passw[n])
             if name_student == d[1] and d[4]=='студент':
                 name_lst = d[1]
-                break
-            
-        print('Некорректное ФИО')
-
-    if item == '1':
-        item_lst = 'Химия'
-    elif item == '2':
-        item_lst = 'Материаловедение'
-    elif item == '3':
-        item_lst = 'Метрология' 
-    elif item == '4':
-        item_lst = 'Сертификация' 
-
-    if type_work == 1:
-        type_work_lst = 'РГЗ'
-    elif type_work == 2:
-        type_work_lst = 'КЗ/КП'
-    elif type_work == 3:
-        type_work_lst = 'экзамен'
-
-    if grade == 1:
-        grade_lst = 'не удовлетворительно'
-    elif grade == 2:
-        grade_lst = 'удовлетворительно'
-    elif grade == 3:
-        grade_lst = 'хорошо' 
-    elif grade == 4:
-        grade_lst = 'отлично' 
-    
+                complet = True
+                
+        if not complet:
+            print('Некорректное ФИО')
 
     arr = [item_lst, name_lst, type_work_lst, grade_lst]
     
     lkey = ['Предмет', 'ФИО', 'Вид работы', 'Оценка']
     array = dict(zip(lkey, arr))
-    print(array)
+    
     
     return arr
 
-
-
-#print(read_grade())
 
 def find_grade_teacher():
     comp = False
     while not comp:
         print("Выберете предмет: 1 - химия, 2- материаловедение, 3- метрология, 4- сертификация")
         item = input()
-        
-        if item == '1' or item == '2' or item == '3' or item == '4':
-                comp = True  
 
-    if item == '1':
-        word1 = 'Химия'
-    elif item == '2':
-        word1 = 'Материаоведение'
-    elif item == '3':
-        word1 = 'Метрология'
-    elif item == '4':
-        word1 = 'Сертификация'
+        if item == '1':
+            word1 = 'Химия'
+            comp = True
+        elif item == '2':
+            word1 = 'Материаловедение'
+            comp = True
+        elif item == '3':
+            word1 = 'Метрология'
+            comp = True
+        elif item == '4':
+            word1 = 'Сертификация'
+            comp = True
+        if not comp:
+           print('Введите заново') 
 
     comp = False
     while not comp:
         print("Выберете вид работы: 1 - РГЗ, 2 - КЗ/КП, 3 - экзамен")
         type_work = input()
-        if type_work == '1' or type_work == '2' or type_work == '3' :
+        if  type_work == '1':
+            word2 = 'РГЗ'
+            comp = True
+        elif type_work == '2':
+            word2 = 'КЗ/КП'
+            comp = True
+        elif type_work == '3':
+            word2 = 'Экзамен'
             comp = True  
-        
-    if  type_work == '1':
-        word2 = 'РГЗ'
-    elif type_work == '2':
-        word2 = 'КЗ/КП'
-    elif type_work == '3':
-        word2 = 'Экзамен'
+        if not comp:
+           print('Введите заново')
+    
     
     #data = []
     path = 'Grade.csv'
@@ -119,23 +125,22 @@ def find_grade_teacher():
         file_reader = csv.reader(file, delimiter = "|")
         user_passw = list(file_reader) 
             #print(user_passw)
-        r = False
+    r = False
     for n in range(len(user_passw)): 
         d = user_passw[n]
-                #print(h, type(h))
+        d.append('n')
+        d.append('m')
         if d[0] == word1 and  d[2] == word2:
             kkey = ['Предмет', 'ФИО', 'Вид работы', 'Оценка']
             ar = dict(zip(kkey, d)) 
             print(ar) 
             ar = 0
-            
-            #data.append(ar)
-            
             r = True
 
     if not r:
         print('Оцеки по выбранному предмету или виду работы еще не выставлены!')
             
+
 
 def find_grade_student(name):
     path = 'Grade.csv'
@@ -146,37 +151,55 @@ def find_grade_student(name):
             #print(user_passw)
             for n in range(len(user_passw)): 
                 d = user_passw[n]
+                d.append(' ')
+                d.append(' ')
                 # print(d, type(d))
                 if d[1] == name:
-                    kkey = ['Предмет', 'ФИО', 'Вид работы', 'Оценка']
-                    ar = dict(zip(kkey, d))   
-                    data.append(ar)
-#     print(data)            
+                    #kkey = ['Предмет', 'ФИО', 'Вид работы', 'Оценка']
+                    #ar = dict(zip(kkey, d)) 
+                    data.append(d)  
+    
+                    #data.append(ar)
+# print(find_grade_student('Пименов С.И.'))            
 # find_grade_student('Абаканов С.И.')
 
     comp = False
     while not comp:
         print("Выберете предмет: 1 - химия, 2- материаловедение, 3- метрология, 4- сертификация")
-        item = input()
-        
-        if item == '1' or item == '2' or item == '3' or item == '4':
-                comp = True  
+        item = input() 
 
-    if item == '1':
-        word1 = 'Химия'
-    elif item == '2':
-        word1 = 'Материаловедение'
-    elif item == '3':
-        word1 = 'Метрология'
-    elif item == '4':
-        word1 = 'Сертификация'
+        if item == '1':
+            word1 = 'Химия'
+            comp = True
+        elif item == '2':
+            word1 = 'Материаловедение'
+            comp = True
+        elif item == '3':
+            word1 = 'Метрология'
+            comp = True
+        elif item == '4':
+            word1 = 'Сертификация'
+            comp = True
+        if not comp:
+            print('Введите заново') 
+    ar = []
     ff = False
     for i in data:
-        if i['Предмет'] == word1:
-            print(i)
+        if i[0] == word1:
+            ar.append(i[0])
+            ar.append(i[1])
+            ar.append(i[2])
+            ar.append(i[3])
+            # print(ar)
+            kkey = ['Предмет', 'ФИО', 'Вид работы', 'Оценка']
+            d = dict(zip(kkey, ar))
+            print(d)
+            ar = []
             ff = True
     if not ff:
             print('Оценки еще не выставлены ')
+            
+# find_grade_student('Пименов С.И.')
     
                 
 
@@ -193,23 +216,12 @@ def find_grade_student(name):
 
 
 
-'''
-with open('Grade.csv', "r", encoding='utf-8') as f:
-    file_reader = csv.DictReader(f, delimiter = "|") 
-    for row in file_reader:
-        data.append(row)
-    print(data)
-    for i in range(len(data)):
-        word = 'Химия'
-        if word.lower() in data['Предмет']:
-            print('data[i]')
-        
-        else: print('Нет такой записи')
 
-    # def is_part_in_list(str_, words):
-    # for word in words:
-    #     if word.lower() in str_.lower():
-    #         return True
-    # return False
+   
+    
 
-'''
+
+
+
+
+
