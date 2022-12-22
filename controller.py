@@ -7,6 +7,7 @@ print('Электронный табель оценок')
 name_status = Identifikation.identifikation()
 
 while True:
+
     if name_status[1] == 'преподаватель':
         teacher.menu_teach()
     elif name_status[1] == 'студент':
@@ -15,8 +16,7 @@ while True:
     n = input()
     if n == '1':
         break
-    else:
-        continue
+    
 
 
     
