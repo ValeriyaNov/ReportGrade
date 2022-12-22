@@ -2,6 +2,7 @@ import os
 os.chdir(os.path.dirname(__file__))
 import csv
 
+
 def read_grade():
     complet = False
     while not complet:
@@ -76,8 +77,7 @@ def read_grade():
     
     lkey = ['Предмет', 'ФИО', 'Вид работы', 'Оценка']
     array = dict(zip(lkey, arr))
-    
-    
+
     return arr
 
 
@@ -118,13 +118,11 @@ def find_grade_teacher():
         if not comp:
            print('Введите заново')
     
-    
-    #data = []
     path = 'Grade.csv'
     with open(path, "r", encoding='utf-8') as file:
         file_reader = csv.reader(file, delimiter = "|")
         user_passw = list(file_reader) 
-            #print(user_passw)
+            
     r = False
     for n in range(len(user_passw)): 
         d = user_passw[n]
@@ -141,27 +139,20 @@ def find_grade_teacher():
         print('Оцеки по выбранному предмету или виду работы еще не выставлены!')
             
 
-
 def find_grade_student(name):
     path = 'Grade.csv'
     data = []
     with open(path, "r", encoding='utf-8') as file:
             file_reader = csv.reader(file, delimiter = "|")
             user_passw = list(file_reader) 
-            #print(user_passw)
+            
             for n in range(len(user_passw)): 
                 d = user_passw[n]
                 d.append(' ')
                 d.append(' ')
-                # print(d, type(d))
+                
                 if d[1] == name:
-                    #kkey = ['Предмет', 'ФИО', 'Вид работы', 'Оценка']
-                    #ar = dict(zip(kkey, d)) 
                     data.append(d)  
-    
-                    #data.append(ar)
-# print(find_grade_student('Пименов С.И.'))            
-# find_grade_student('Абаканов С.И.')
 
     comp = False
     while not comp:
@@ -190,7 +181,7 @@ def find_grade_student(name):
             ar.append(i[1])
             ar.append(i[2])
             ar.append(i[3])
-            # print(ar)
+            
             kkey = ['Предмет', 'ФИО', 'Вид работы', 'Оценка']
             d = dict(zip(kkey, ar))
             print(d)
@@ -199,25 +190,7 @@ def find_grade_student(name):
     if not ff:
             print('Оценки еще не выставлены ')
             
-# find_grade_student('Пименов С.И.')
-    
-                
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
     
 
 
